@@ -1,0 +1,139 @@
+^# 🚀 AI Design Studio — Master Guide
+### 3 Agents + Figma MCP | Updated February 2026
+
+---
+
+## The Complete Pipeline
+
+```
+Your Idea
+    ↓
+Agent 1 — PRD Agent
+    ↓ PRD document (user stories, personas, features, success metrics)
+Agent 3 — Screen Architecture & Governance Agent
+    ↓ Screen inventory + user flow map + Figma file plan + governance doc
+Agent 2 — Design System Agent
+    ↓ Design system spec + tokens.json (W3C DTCG) + README.md
+Figma — Design (fully structured, token-ready, governed)
+    ↓
+Figma MCP + Claude — React Native + Tailwind code
+```
+
+---
+
+## The 3 Agents
+
+| Agent | Input | Outputs | Set up in |
+|---|---|---|---|
+| **Agent 1 — PRD** | Your rough idea | PRD document | Claude Project 1 |
+| **Agent 3 — Screen Architecture** | PRD from Agent 1 | Screen inventory, flow map, Figma file plan, governance doc | Claude Project 3 |
+| **Agent 2 — Design System** | PRD from Agent 1 | Design system spec, tokens.json, README | Claude Project 2 |
+
+*Run Agent 3 before Agent 2 — the screen inventory informs which components the design system needs to prioritize.*
+
+---
+
+## How to Set Up Each Agent
+
+1. Go to **claude.ai → Projects → New Project**
+2. Name it (e.g. `PRD Agent`, `Screen Architecture Agent`, `Design System Agent`)
+3. Click **"Project Instructions"** → paste the full contents of the agent's `.md` file
+4. Every new conversation in that project behaves as that agent
+
+---
+
+## Handoff Flow
+
+### Agent 1 → Agent 3
+```
+## Handoff from PRD Agent
+[paste full PRD]
+
+## Project Context
+- Platforms: [Mobile / Web / Both]
+- Design tool: Figma (free seat + Figma MCP)
+- Stack: React Native + Tailwind
+- Type: [Open source / Portfolio / Client]
+
+Let's map the architecture.
+```
+
+### Agent 1 → Agent 2 (after Agent 3)
+```
+## Handoff from PRD Agent
+[paste full PRD]
+
+## Screen Architecture Summary (from Agent 3)
+[paste component dependencies list from screen inventory]
+
+## Project Context
+- Platforms: [Mobile / Web / Both]
+- Design tool: Figma (free seat + Figma MCP)
+- Stack: React Native + Tailwind
+- Type: [Open source / Portfolio / Client]
+
+Let's design the system.
+```
+
+---
+
+## What Each Agent Produces
+
+### Agent 1 — PRD
+- Executive summary
+- Problem statement
+- Goals & success metrics
+- User personas
+- User stories with acceptance criteria
+- Feature requirements (MVP vs Phase 2)
+- Technical constraints
+- Competitive landscape
+- Open questions & risks
+
+### Agent 3 — Screen Architecture & Governance
+- **Screen inventory** — every screen with ID, states, component deps, MVP flag, status tag
+- **User flow map** — Mermaid.js diagram (paste into FigJam directly)
+- **Figma file architecture** — exact page/frame structure for free seat (2 files, 3 pages each)
+- **Governance document** — component health statuses, versioning, decision log, monthly ritual, GitHub structure
+
+### Agent 2 — Design System
+- **Design system spec** — principles, color system with WCAG 2.2 AA ratios, typography, spacing, radius, shadows, icons, motion, accessibility, component library
+- **tokens.json** — W3C DTCG 2025.10 standard, imports directly into Figma via Tokens Studio (free plugin)
+- **README.md** — plain-language guide for designers and developers
+
+---
+
+## Figma MCP Workflow (After All 3 Agents)
+
+Once your Figma files are set up using Agent 3's architecture plan and Agent 2's token system:
+
+| Task | What to do |
+|---|---|
+| Inspect a Figma frame | Share URL → Claude reads nodes, layout, tokens |
+| Generate component code | Share frame URL → Claude outputs React Native + Tailwind |
+| Check design vs spec | Share URL → Claude compares against design system |
+| Verify token usage | Share URL → Claude reads Figma variables and checks consistency |
+
+**Example prompt:**
+> "Here's my Figma frame for the Home screen: [URL]. The design system spec is in this conversation. Generate a React Native + Tailwind component for the DepartureBoardRow in the populated state."
+
+---
+
+## Files in This Pack
+
+| File | What it is |
+|---|---|
+| `agent-1-prd.md` | Agent 1 system prompt — paste into Claude Project Instructions |
+| `agent-3-screen-architecture.md` | Agent 3 system prompt — paste into Claude Project Instructions |
+| `agent-2-design-system.md` | Agent 2 system prompt — paste into Claude Project Instructions |
+| `master-guide.md` | This file |
+
+---
+
+## Recommended Future Agents (When Ready)
+
+| Agent | Purpose |
+|---|---|
+| 🖥 Figma-to-Code Agent | Dedicated agent with design system context always loaded, optimized for Figma MCP → React Native |
+| ✅ QA & Design Review Agent | Checks screens against PRD requirements, design system rules, and WCAG 2.2 AA |
+| 📦 Handoff & Release Agent | Generates developer handoff docs, release notes, and changelogs per sprint |
